@@ -232,16 +232,105 @@ public class Assignment {
             53 59 61 67 71 73
          */
 
+//        int num8 = sc.nextInt(), nsp = num8 - 1, val = 2;
+//        for(int i = 1; i<= num8; i++){
+//            for(int j = 1; j<= nsp; j++){
+//                System.out.print("  ");
+//            }
+//            for(int j = 1; j<=i; j++){
+//                System.out.print(val+"   ");
+//                val = primeNum(val);
+//            }
+//            nsp--;
+//            System.out.println();
+//        }
 
+        /*
+            Ninth question
+            Q9- Write a program to check whether a prime Number can be expressed as a Sum of Two
+            Prime Numbers.
+            Input1:
+            13
+            Output1:
+            True
+            Input2:
+            2
+            Output2:
+            False
 
+            Hint: Apart from 2, all of the prime numbers are odd. So it is not possible to represent a prime number
+            (which is odd) to be written as a sum of two odd prime numbers, so we are sure that one of the two
+            prime numbers should be 2. So we have to check whether n-2 is prime or not.
+         */
 
+//        int num9 = sc.nextInt(), i = 2;
+//        boolean ans = false;
+//        while(i<num9-1){
+//            if(checkIsPrime(num9 - i)){
+//                ans = true;
+//                break;
+//            }
+//            i = primeNum(i);
+//        }
+//        System.out.println(ans);
 
+        /*
+            Tenth question
+            Q10- You are given n number of bulbs. They are all switched off. A weird fluctuation in voltage hits the
+            circuit n times. In the 1st fluctuation all bulbs are toggled, in the 2nd fluctuation every 2nd bulb is toggled,
+            in the 3rd fluctuation every 3rd bulb is toggled and so on. You've to find which bulbs will be switched on
+            after n fluctuations.
+            Take as input a number n, representing the number of bulbs.
+            Print all the bulbs that will be on after the nth fluctuation in voltage.
 
+            //only those bulbs will remain on which are perfect
+            squares as perfect squares have odd number of divisors due to their square root being
+            the extra one, whereas rest have even number of divisors
 
+            (Medium)
 
+            Input1:
+            10
+            Output1:
+            1 4 9
+            Input2:
+            25
+            Output2:
+            1 4 9 16 25
+         */
+
+        int num10 = sc.nextInt(), i = 1;
+        while(true){
+            if(i*i <= num10) System.out.println(i*i);
+            else break;
+            i++;
+        }
 
     }
 
+    // Given a prime this function will return the next prime
+    static int primeNum(int prevPrime){
+        int i = prevPrime + 1;
+        while(true){
+            boolean isPrime = checkIsPrime(i);
+            if(!isPrime) i++;
+            else break;
+        }
+        return i;
+    }
+
+    static boolean checkIsPrime(int num){
+        boolean isPrime = true;
+        for(int j = 2; j<num; j++){
+            if(num%j == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        return isPrime;
+    }
+
+    // check whether a number is armstrong or not
     static boolean isArmstrong(int num){
         int temp = num, sum = 0;
 
