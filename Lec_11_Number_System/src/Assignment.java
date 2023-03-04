@@ -14,8 +14,8 @@ public class Assignment {
             Output2:
             10100011
          */
-//        int decNum = sc.nextInt();
-//        System.out.println(decimalToBinary(decNum));
+        int decNum = sc.nextInt();
+        System.out.println(decimalToBinary(decNum));
 
         /*
             Second question
@@ -30,8 +30,8 @@ public class Assignment {
             35
          */
 
-//        int binNum = sc.nextInt();
-//        System.out.println(binaryToDecimal(binNum));
+        int binNum = sc.nextInt();
+        System.out.println(binaryToDecimal(binNum));
 
         /*
             Third question
@@ -48,9 +48,9 @@ public class Assignment {
             91
          */
 
-//        int firstNo = sc.nextInt(), secondNo = sc.nextInt();
-//        int decSecondNo = binaryToDecimal(secondNo);
-//        System.out.println(firstNo + decSecondNo);
+        int firstNo = sc.nextInt(), secondNo = sc.nextInt();
+        int decSecondNo = binaryToDecimal(secondNo);
+        System.out.println(firstNo + decSecondNo);
 
         /*
             Fourth question
@@ -71,6 +71,34 @@ public class Assignment {
         int decMulSecondNo = binaryToDecimal(mulSecondNo);
         System.out.println(mulFirstNo * decMulSecondNo);
 
+        /*
+            Fifth question
+            Q5 - Convert a decimal double number into binary string for upto k precision digits
+            Input1:
+            18.625
+            3
+            Output1: (in string format)
+            10010.101
+            Input2:
+            32.45
+            4
+            Output2:
+            100000.0111
+         */
+
+        double decDoubleNo = sc.nextDouble();
+        int precision = sc.nextInt();
+
+        int wholeNo = (int)(decDoubleNo);
+        double fractionalPartNo = decDoubleNo%1;
+
+        String ans = "";
+
+        ans += decimalToBinary(wholeNo);
+        ans += ".";
+        ans += fractionalPartToBinary(fractionalPartNo, precision);
+
+        System.out.println(ans);
 
     }
 
@@ -82,6 +110,18 @@ public class Assignment {
             num/=2;
         }
         return sum;
+    }
+
+    static StringBuilder fractionalPartToBinary(double num, int precision){
+        int counter = 1;
+        StringBuilder ans = new StringBuilder();
+        while(counter<=precision){
+           num *= 2;
+           ans.append((int)num); // getting only the integer part
+           num %= 1;
+           counter++;
+        }
+        return ans;
     }
 
     static int binaryToDecimal(int num){
