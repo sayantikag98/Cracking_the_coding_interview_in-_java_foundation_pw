@@ -151,6 +151,46 @@ public class Assignment {
         }
         return count;
     }
+
+    /**
+     * Question:
+     * Given an integer array arr, return the number of consecutive sequences(subarrays) with odd sum.
+     * <br><br>
+     * Input:
+     * <br>
+     * 3
+     * <br>
+     * 1 3 5
+     * <br><br>
+     * Expected Output:
+     * <br>
+     * 4
+     * <hr><br>
+     *
+     * <br><br>
+     * TC => O(n)
+     * <br>
+     * SC => O(1)
+     * <br><br>
+     * @param arr the given array
+     * @return number of subarrays with odd sum
+     */
+    static int noOfSubArraysWithOddSumPW(int[] arr){
+        int odd = 0, even = 0, sum = 0;
+        for (int num : arr) {
+            if (num % 2 == 1) {
+                int temp = odd; //swap odd and even
+                odd = even;
+                even = temp;
+                odd++;
+            }
+            else{
+                even++;
+            }
+            sum += odd;
+        }
+        return sum;
+    }
     public static void main(String[] args) {
         /*
             First question
@@ -166,5 +206,6 @@ public class Assignment {
          */
         int[] arr2 = BasicOperations.createArray();
         System.out.println(noOfSubArrayWithOddSumUsingNestedLoop(arr2));
+        System.out.println(noOfSubArraysWithOddSumPW(arr2));
     }
 }
