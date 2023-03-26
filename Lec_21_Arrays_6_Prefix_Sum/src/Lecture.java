@@ -120,6 +120,38 @@ public class Lecture {
         return false;
     }
 
+    /**
+     * Question:
+     * Given an array find the suffix sum.
+     * <br><br>
+     * Input:
+     * <br>
+     * 4
+     * <br>
+     * 1 3 2 1
+     * <br><br>
+     * Expected Output:
+     * <br>
+     * 7 6 3 1
+     * <hr><br>
+     * suffixSum[i] = suffixSum[i+1] + arr[i]
+     * <br><br>
+     * TC => O(n)
+     * <br>
+     * SC => O(1)
+     * <br><br>
+     *
+     * @param arr the input array
+     * @return the suffix sum array
+     */
+
+    static int[] calcSuffixSum(int[] arr){
+        int n = arr.length;
+        for(int i = n-2; i>=0; i--){
+            arr[i] += arr[i+1];
+        }
+        return arr;
+    }
 
     public static void main(String[] args) {
         /*
@@ -149,7 +181,10 @@ public class Lecture {
         int[] arr2 = BasicOp.createArray();
         System.out.println(partitionSubArrayWithEqualSum(arr2));
 
-
-
+        /*
+            Fourth question
+         */
+        int[] arr3 = BasicOp.createArray();
+        BasicOp.printArray(calcSuffixSum(arr3));
     }
 }
