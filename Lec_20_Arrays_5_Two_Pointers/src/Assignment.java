@@ -105,13 +105,14 @@ public class Assignment {
      */
     static boolean noOfUniqueElementsUsingSortingAndNestedLoop(int[] arr, int m){
         Arrays.sort(arr); //inplace sort
-        int j = 0, i = 0, count = 0;
+        int j = 0, count = 0;
         while(j<arr.length){
-            count++;
+            int i = j;
             while(i<arr.length && arr[i] == arr[j]){  // here checking whether i is within the bounds of the array is imp
                 i++;
             }
             j = i;
+            count++;
         }
         return count >= m;
     }
